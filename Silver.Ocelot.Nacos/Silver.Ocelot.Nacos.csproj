@@ -1,0 +1,93 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>1.0.3</Version>
+		<Authors>liangfy</Authors>
+		<Description>
+			Ocelot Nacos网关
+
+			appsettings.json 配置文件
+			{
+			"Logging": {
+			"LogLevel": {
+			"Default": "Information",
+			"Microsoft.AspNetCore": "Warning"
+			}
+			},
+			"AllowedHosts": "*",
+			"nacos": {
+			"ServerAddresses": [ "http://192.168.40.117:8848" ],
+			"DefaultTimeOut": 15000,
+			"ListenInterval": 1000,
+			"ServiceName": "NacosGateway",
+			"GroupName": "atlantis-cloud",
+			"Namespace": "public",
+			"NamingUseRpc": false
+			},
+			"Routes": [
+			{
+			"UseServiceDiscovery": true,
+			"DownstreamPathTemplate": "/sovell/person/clientapi/{url}",
+			"DownstreamScheme": "http",
+			"ServiceName": "sovell-person-clientapi",
+			"LoadBalancerOptions": {
+			"Type": "RoundRobin"
+			},
+			"UpstreamPathTemplate": "/api/{url}",
+			"UpstreamHttpMethod": [ "Get", "Post" ],
+			"ReRoutesCaseSensitive": false,
+			"AuthenticationOptions": {
+			"AuthenticationProviderKey": null,
+			"AllowedScopes": []
+			},
+			"HttpHandlerOptions": {
+			"AllowAutoRedirect": false,
+			"UseCookieContainer": false,
+			"UseTracing": false,
+			"UseProxy": true
+			},
+			"DangerousAcceptAnyServerCertificateValidator": false,
+			"Timeout": 0
+			}
+
+			],
+			"GlobalConfiguration": {
+			"ServiceDiscoveryProvider": {
+			"Type": "Nacos"
+			}
+			}
+			}
+
+			程序引用：
+			Program.cs
+			var builder = WebApplication.CreateBuilder(args);
+			builder.Services.AddOcelot().AddNacos();
+			或
+			builder.Services.AddOcelot().AddNacos(“https://127.0.0.1:8848/”);
+
+			var app = builder.Build();
+			app.UseOcelot().Wait();
+
+
+		</Description>
+		<PackAsTool>False</PackAsTool>
+		<IncludeSymbols>True</IncludeSymbols>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="ru0sufd5.eru~" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+		<PackageReference Include="nacos-sdk-csharp.AspNetCore" Version="1.3.5" />
+		<PackageReference Include="Ocelot" Version="19.0.2" />
+	</ItemGroup>
+
+
+</Project>

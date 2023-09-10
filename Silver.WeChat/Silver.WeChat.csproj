@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SKIT.FlurlHttpClient.Wechat.Api" Version="2.32.0" />
+    <PackageReference Include="SKIT.FlurlHttpClient.Wechat.TenpayV3" Version="2.20.0" />
+    <PackageReference Include="SKIT.FlurlHttpClient.Wechat.Work" Version="2.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Silver.Basic\Silver.Basic.csproj" />
+    <ProjectReference Include="..\Silver.Cache\Silver.Cache.csproj" />
+  </ItemGroup>
+
+</Project>
