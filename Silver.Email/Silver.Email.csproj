@@ -3,10 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageId>Silver.Email</PackageId>
+	  <Title>电子邮件</Title>
+	  <Version>1.0.0</Version>
+	  <Authors>liangfy</Authors>
+	  <Description>
+		  电子邮件
+		  https://github.com/liangfangyin/Silver
+	  </Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Silver.Basic\Silver.Basic.csproj" />
+	  <PackageReference Include="Silver.Basic" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

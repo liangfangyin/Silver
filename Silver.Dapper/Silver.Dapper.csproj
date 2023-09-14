@@ -1,16 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageId>Silver.Dapper</PackageId>
+	  <Title>Dapper</Title>
+	  <Version>1.0.0</Version>
+	  <Authors>liangfy</Authors>
+	  <Description>
+		  Dapper 
+		  https://github.com/liangfangyin/Silver
+	  </Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Zq.SQLBuilder.Core" Version="2.4.0" />
+	  <PackageReference Include="Silver.Basic" Version="1.0.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Silver.Basic\Silver.Basic.csproj" />
-  </ItemGroup>
+ 
 
 </Project>

@@ -73,9 +73,7 @@
 
 	<ItemGroup> 
 		<PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+		<PackageReference Include="Silver.Basic" Version="1.0.0" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Silver.Basic\Silver.Basic.csproj" />
-	</ItemGroup>
+ 
 </Project>

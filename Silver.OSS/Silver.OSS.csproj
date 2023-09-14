@@ -3,6 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageId>Silver.OSS</PackageId>
+	  <Title>OSS</Title>
+	  <Version>1.0.0</Version>
+	  <Authors>liangfy</Authors>
+	  <Description>
+		  OSS
+		  https://github.com/liangfangyin/Silver
+	  </Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,10 +20,9 @@
     <PackageReference Include="Minio" Version="5.0.0" />
     <PackageReference Include="Qiniu" Version="8.3.1" />
     <PackageReference Include="Tencent.QCloud.Cos.Sdk" Version="5.4.35" />
+	  <PackageReference Include="Silver.Basic" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Silver.Basic\Silver.Basic.csproj" />
-  </ItemGroup>
+ 
 
 </Project>

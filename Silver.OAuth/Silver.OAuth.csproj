@@ -4,6 +4,16 @@
 		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>Silver.OAuth</PackageId>
+		<Title>OAuth</Title>
+		<Version>1.0.0</Version>
+		<Authors>liangfy</Authors>
+		<Description>
+			OAuth
+			https://github.com/liangfangyin/Silver
+		</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
