@@ -9,7 +9,7 @@ namespace Silver.NLog.Core.ORM
     /// 服务日志
     ///</summary>
     [SplitTable(SplitType.Month)]
-    [SugarTable("logs_service_{year}{month}")]
+    [SugarTable("logs_service_{year}{month}{day}")]
     public class LogsService
     {
 

@@ -30,6 +30,11 @@ namespace Silver.OSS.Model
         /// </summary>
         public bool Secure { get; set; } = Convert.ToBoolean(ConfigurationUtil.GetSection("OSS:Secure"));
 
+        /// <summary>
+        /// 外网访问地址
+        /// </summary>
+        public string OssApiUrl { get; set; } = ConfigurationUtil.GetSection("OSS:ApiUrl");
+
 
     }
 }

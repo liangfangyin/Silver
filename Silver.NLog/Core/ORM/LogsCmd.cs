@@ -7,7 +7,7 @@ namespace Silver.NLog.Core.ORM
     /// 接口日志
     ///</summary> 
     [SplitTable(SplitType.Month)]
-    [SugarTable("logs_cmd_{year}{month}")]
+    [SugarTable("logs_cmd_{year}{month}{day}")]
     public class LogsCmd
     {
 
