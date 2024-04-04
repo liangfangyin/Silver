@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Silver.Basic\Silver.Basic.csproj" />
+    <ProjectReference Include="..\Silver.ViewFace\Silver.ViewFace.csproj" />
   </ItemGroup>
 
 </Project>

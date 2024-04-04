@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.3" />
+    <PackageReference Include="ViewFaceCore" Version="0.3.8" />
+    <PackageReference Include="ViewFaceCore.all_models" Version="6.0.7" />
+    <PackageReference Include="ViewFaceCore.Extension.SkiaSharp" Version="0.3.7" />
+    <PackageReference Include="ViewFaceCore.runtime.win.x64" Version="6.0.7" />
+  </ItemGroup>
+  
+  
+</Project>

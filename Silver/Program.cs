@@ -1,10 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 using Silver.Basic;
+using Silver.ViewFace;
 
-var result= DateTime.Now.ToLastWeek();
+ 
+var result= ViewFaceUtil.GetFaceBase("D:\\imgs\\14.jpg");
 
-Console.WriteLine("Hello, World!");
 Console.WriteLine((new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()).ToString());
 Console.ReadLine();
 

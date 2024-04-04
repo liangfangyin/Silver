@@ -55,7 +55,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silver.Pay", "Silver.Pay\Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silver.Web", "Silver.Web\Silver.Web.csproj", "{008001CD-8168-453E-8167-D5760537AF07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silver.WatchDog", "Silver.WatchDog\Silver.WatchDog.csproj", "{354A2D8B-44A3-478F-89BD-A1D362C19692}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silver.WatchDog", "Silver.WatchDog\Silver.WatchDog.csproj", "{354A2D8B-44A3-478F-89BD-A1D362C19692}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silver.ViewFace", "Silver.ViewFace\Silver.ViewFace.csproj", "{28C15E22-0C2B-460A-965C-894B0FAE1061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,10 @@ Global
 		{354A2D8B-44A3-478F-89BD-A1D362C19692}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{354A2D8B-44A3-478F-89BD-A1D362C19692}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{354A2D8B-44A3-478F-89BD-A1D362C19692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C15E22-0C2B-460A-965C-894B0FAE1061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C15E22-0C2B-460A-965C-894B0FAE1061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C15E22-0C2B-460A-965C-894B0FAE1061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C15E22-0C2B-460A-965C-894B0FAE1061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
