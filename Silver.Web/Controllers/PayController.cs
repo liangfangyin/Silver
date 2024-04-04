@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Silver.Pay.Model.Request;
 using Silver.Pay.Payment;
 using Silver.Web.Model;
+using Silver.WeChat;
 
 namespace Silver.Web.Controllers
 {
@@ -19,6 +20,23 @@ namespace Silver.Web.Controllers
             this.payment = new Payment( notifyAlipayClient, notifyWeChatClient, aliPay, aliPayOptions.Value, weiChat, weiChatV2, weiChatOptions.Value);
         }
 
+        [HttpPost]
+        public async Task<ResponseModel> WeChat([FromBody] PayRequest request)
+        {
+            WeChatClient chatClient = new WeChatClient("wx507c3250835e3cb2", "a536c638cb259138e2586a75b576363d");
+            var result = await chatClient.ExecuteSnsOAuth2AccessTokenAsync(request.OutTradeNo);
+            if (!result.Item1)
+            {
+                json.code = ErrorCodetaticVars.DataFailure;
+                json.msg = result.Item3;
+                return json;
+            }
+            var resultUser = await chatClient.ExecuteCgibinUserInfoAsync(result.Item2.OpenId);
+
+
+         
+            return json;
+        }
 
         [HttpPost]
         public async Task<ResponseModel> Create([FromBody] PayRequest request)

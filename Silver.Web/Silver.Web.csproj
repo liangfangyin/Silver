@@ -7,11 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.26" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Silver.Pay\Silver.Pay.csproj" />
+    <ProjectReference Include="..\Silver.WatchDog\Silver.WatchDog.csproj" />
+    <ProjectReference Include="..\Silver.WeChat\Silver.WeChat.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\WatchPage\css\bootstrap.min.css" />
+    <None Include="wwwroot\WatchPage\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\WatchPage\images\icons\favicon.ico" />
+    <None Include="wwwroot\WatchPage\images\watchdogLogo.png" />
+    <None Include="wwwroot\WatchPage\images\watchdogWhiteLogo.png" />
+    <None Include="wwwroot\WatchPage\index.html" />
+    <None Include="wwwroot\WatchPage\js\bootstrap.min.js" />
+    <None Include="wwwroot\WatchPage\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\WatchPage\js\moment.min.js" />
+    <None Include="wwwroot\WatchPage\js\popper.min.js" />
+    <None Include="wwwroot\WatchPage\signalr\signalr.js" />
+    <None Include="wwwroot\WatchPage\signalr\signalr.min.js" />
   </ItemGroup>
 
 </Project>

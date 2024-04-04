@@ -19,16 +19,7 @@ namespace Silver.WeChat
         /// 
         /// </summary>
         public WechatApiClient client;
-
-        /// <summary>
-        /// 令牌(Token)
-        /// </summary>
-        private string token { get; set; } = "Token";
-
-        /// <summary>
-        /// 消息加解密密钥(EncodingAESKey)
-        /// </summary>
-        private string encodingAESKey { get; set; } = "";
+         
 
         /// <summary>
         /// 应用号:如：微信公众平台AppId、微信开放平台AppId、微信小程序AppId、企业微信CorpId等
@@ -45,9 +36,7 @@ namespace Silver.WeChat
         #region 构造函数
 
         public WeAppletClient()
-        {
-            token = ConfigurationUtil.GetSection("WeChat:Token");
-            encodingAESKey = ConfigurationUtil.GetSection("WeChat:EncodingAESKey"); 
+        { 
             appID = ConfigurationUtil.GetSection("WeChat:AppId");  
             appSecrt = ConfigurationUtil.GetSection("WeChat:AppSecret"); 
 
@@ -61,11 +50,8 @@ namespace Silver.WeChat
 
         public WeAppletClient(string token, string encodingAESKey, string appID, string appSecrt)
         {
-            this.token = token;
-            this.encodingAESKey = encodingAESKey;
             this.appID = appID;
             this.appSecrt = appSecrt;
-
             var options = new WechatApiClientOptions()
             {
                 AppId = appID,

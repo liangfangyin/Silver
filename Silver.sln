@@ -51,9 +51,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silver.SqlSugar", "Silver.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silver.ThirdApi", "Silver.ThirdApi\Silver.ThirdApi.csproj", "{38B95D76-4388-46E7-95B9-FBCF06F5CF62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silver.Pay", "Silver.Pay\Silver.Pay.csproj", "{6C19A70D-1329-4C18-90E3-5401EA0E5F75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silver.Pay", "Silver.Pay\Silver.Pay.csproj", "{6C19A70D-1329-4C18-90E3-5401EA0E5F75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silver.Web", "Silver.Web\Silver.Web.csproj", "{008001CD-8168-453E-8167-D5760537AF07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silver.Web", "Silver.Web\Silver.Web.csproj", "{008001CD-8168-453E-8167-D5760537AF07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silver.WatchDog", "Silver.WatchDog\Silver.WatchDog.csproj", "{354A2D8B-44A3-478F-89BD-A1D362C19692}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +167,10 @@ Global
 		{008001CD-8168-453E-8167-D5760537AF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{008001CD-8168-453E-8167-D5760537AF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{008001CD-8168-453E-8167-D5760537AF07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354A2D8B-44A3-478F-89BD-A1D362C19692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354A2D8B-44A3-478F-89BD-A1D362C19692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354A2D8B-44A3-478F-89BD-A1D362C19692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354A2D8B-44A3-478F-89BD-A1D362C19692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,16 @@
-﻿using Essensoft.Paylink.WeChatPay;
+﻿using Essensoft.Paylink.Security;
+using Essensoft.Paylink.WeChatPay;
 using Essensoft.Paylink.WeChatPay.V3;
 using Essensoft.Paylink.WeChatPay.V3.Domain;
 using Essensoft.Paylink.WeChatPay.V3.Request;
 using Silver.Basic;
+using Silver.Pay.Extensions;
 using Silver.Pay.Model;
 using Silver.Pay.Model.Request;
 using Silver.Pay.Model.Response.Create;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace Silver.Pay.WeChatPay
 {
@@ -104,16 +109,28 @@ namespace Silver.Pay.WeChatPay
             result.Result = response.Body;
             if (!response.IsError)
             {
-                var req = new WeChatPayJsApiSdkRequest
+                WeChatPayDictionary sortedTxtParams = new WeChatPayDictionary();
+                if (!string.IsNullOrEmpty(_optionsAccessor.SubAppId))
                 {
-                    Package = "prepay_id=" + response.PrepayId
-                };
-                var parameter = await _client.ExecuteAsync(req, _optionsAccessor); 
-                result.OpenId = "";
-                result.TotalFee = viewModel.Total.ToDecimal();
-                result.TransactionId = "";
-                result.OutTradeNo = viewModel.OutTradeNo;
-                result.PrepayId = response.PrepayId;
+                    sortedTxtParams.Add("appId", _optionsAccessor.SubAppId);
+                }
+                else
+                {
+                    sortedTxtParams.Add("appId", _optionsAccessor.AppId);
+                }
+                sortedTxtParams.Add("timeStamp", WeChatPayUtility.GetTimeStamp());
+                sortedTxtParams.Add("nonceStr", WeChatPayUtility.GenerateNonceStr());
+                sortedTxtParams.Add("package", "prepay_id=" + response.PrepayId);
+                sortedTxtParams.Add("signType", "RSA");
+                string paySign = "";
+                string data = BuildSignatureSourceData(sortedTxtParams);
+                var Certificate2 = new X509Certificate2(_optionsAccessor.Certificate, _optionsAccessor.CertificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
+                using (RSA RSAPrivateKey = Certificate2.GetRSAPrivateKey())
+                {
+                    paySign = SHA256WithRSA.Sign(RSAPrivateKey, data);
+                }
+                sortedTxtParams.Add("paySign", paySign);
+                result.Result = (new { package = sortedTxtParams.GetValue("package"), appId = sortedTxtParams.GetValue("appId"), timeStamp = sortedTxtParams.GetValue("timeStamp"), nonceStr = sortedTxtParams.GetValue("nonceStr"), signType = sortedTxtParams.GetValue("signType"), paySign = sortedTxtParams.GetValue("paySign") }).ToJson();
             }
             return result;
         }
@@ -235,23 +252,45 @@ namespace Silver.Pay.WeChatPay
             result.IsSuccess = !response.IsError;
             result.StatusCode = ((int)response.StatusCode);
             result.Message = response.Message;
-            result.Result = response.Body;
+            result.Result = response.Body; 
             if (!response.IsError)
             {
-                var req = new WeChatPayMiniProgramSdkRequest
+                WeChatPayDictionary sortedTxtParams = new WeChatPayDictionary();
+                if (!string.IsNullOrEmpty(_optionsAccessor.SubAppId))
                 {
-                    Package = "prepay_id=" + response.PrepayId
-                };
-                var parameter = await _client.ExecuteAsync(req, _optionsAccessor); 
-                result.OpenId = "";
-                result.TotalFee = viewModel.Total.ToDecimal();
-                result.TransactionId = "";
-                result.OutTradeNo = viewModel.OutTradeNo;
-                result.PrepayId = response.PrepayId;
+                    sortedTxtParams.Add("appId", _optionsAccessor.SubAppId);
+                }
+                else
+                {
+                    sortedTxtParams.Add("appId", _optionsAccessor.AppId);
+                }
+                sortedTxtParams.Add("timeStamp", WeChatPayUtility.GetTimeStamp());
+                sortedTxtParams.Add("nonceStr", WeChatPayUtility.GenerateNonceStr());
+                sortedTxtParams.Add("package", "prepay_id=" + response.PrepayId);
+                sortedTxtParams.Add("signType", "RSA"); 
+                string paySign = "";
+                string data = BuildSignatureSourceData(sortedTxtParams);
+                var Certificate2 = new X509Certificate2(_optionsAccessor.Certificate, _optionsAccessor.CertificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
+                using (RSA RSAPrivateKey = Certificate2.GetRSAPrivateKey())
+                {
+                    paySign = SHA256WithRSA.Sign(RSAPrivateKey, data);
+                }
+                sortedTxtParams.Add("paySign", paySign);
+                result.Result = (new { package = sortedTxtParams.GetValue("package"), appId = sortedTxtParams.GetValue("appId"), timeStamp = sortedTxtParams.GetValue("timeStamp"), nonceStr = sortedTxtParams.GetValue("nonceStr"), signType = sortedTxtParams.GetValue("signType"), paySign = sortedTxtParams.GetValue("paySign") }).ToJson();
             }
             return result;
         }
 
+        /// <summary>
+        /// 加密
+        /// </summary>
+        /// <param name="sortedTxtParams"></param>
+        /// <returns></returns>
+        private static string BuildSignatureSourceData(WeChatPayDictionary sortedTxtParams)
+        {
+            return $"{sortedTxtParams.GetValue("appId")}\n{sortedTxtParams.GetValue("timeStamp")}\n{sortedTxtParams.GetValue("nonceStr")}\n{sortedTxtParams.GetValue("package")}\n";
+        }
+         
         /// <summary>
         /// 微信支付订单号查询
         /// </summary>
